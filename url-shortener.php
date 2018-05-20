@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Plugin Name:       URL shortener
+ * Plugin Name:       URL Shortener
  * Plugin URI:        https://github.com/CodeNegar/url-shortener-wordpress-plugin
  * Description:       This is a simple WordPress plugin for https://github.com/CodeNegar/url-shortener
  * Version:           1.0.0
@@ -17,3 +17,18 @@
 if ( ! defined( 'WPINC' ) ) {
 	die;
 }
+
+// Current plugin version.
+define( 'URL_SHORTENER_VERSION', '1.0.0' );
+
+// The core plugin hooks.
+require plugin_dir_path( __FILE__ ) . 'includes/class-url-shortener.php';
+
+// Execute the plugin.
+function run_url_shortener() {
+
+	$plugin = new Url_Shortener();
+	$plugin->get_version();
+}
+
+run_url_shortener();
