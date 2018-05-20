@@ -17,10 +17,16 @@ class Url_ShortenerTest extends WP_UnitTestCase {
          ] ) );
     }
 
-
     // Test that the plugin is activated
 	function test_activated() {
         $this->assertTrue( class_exists( 'Url_Shortener' ), 'Url_Shortener class not defined' );
         $this->assertNotEmpty( $this->class_instance->get_version() );
+	}
+
+	// Test that the widget is added
+	function test_widget_added() {
+        global $GLOBALS;
+        $widgets = $GLOBALS['wp_widget_factory']->widgets;
+        $this->assertTrue(array_key_exists('Url_shortener_widget', $widgets));
 	}
 }
