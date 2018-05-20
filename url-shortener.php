@@ -28,10 +28,5 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-url-shortener.php';
 require plugin_dir_path( __FILE__ ) . 'includes/class-url-shortener-settings.php';
 
 // Execute the plugin.
-function run_url_shortener() {
-
-	$plugin = new Url_Shortener();
-	$plugin->get_version();
-}
-
-run_url_shortener();
+$url_shortener_instance = new Url_Shortener();
+// $url_shortener_instance->get_version();
