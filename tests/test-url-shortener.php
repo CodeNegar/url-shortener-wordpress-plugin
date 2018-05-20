@@ -29,4 +29,28 @@ class Url_ShortenerTest extends WP_UnitTestCase {
         $widgets = $GLOBALS['wp_widget_factory']->widgets;
         $this->assertTrue(array_key_exists('Url_shortener_widget', $widgets));
 	}
+
+	// Test that the widget is added
+	function test_setting_field_generation() {
+        $settings = new Url_shortener_settings_page();
+        $expected = '<input name="test_id" id="test_id" type="text" placeholder="Test Placeholder" value="" class="regular-text ltr" /><p class="description">Test Description </p>';
+
+        ob_start();
+
+        $settings->url_shortener_field_callback(
+            [
+                'label' => 'Test Label',
+                'id' => 'test_id',
+                'type' => 'text',
+                'placeholder' => 'Test Placeholder',
+                'desc' => 'Test Description',
+                'section' => 'test_section',
+            ]
+        );
+        $generated_field = ob_get_contents();
+
+        ob_end_clean();
+        
+        $this->assertEquals($expected, $generated_field);
+	}
 }
