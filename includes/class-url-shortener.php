@@ -25,10 +25,16 @@ class Url_Shortener {
 
 	// Register hooks to integrate to WordPress admin dashboard
 	private function define_admin_hooks() {
+		// Register admin settings page
 		$settings = new Url_shortener_settings_page();
 		add_action( 'admin_menu', array( $settings, 'url_shortener_create_settings' ) );
 		add_action( 'admin_init', array( $settings, 'url_shortener_setup_sections' ) );
 		add_action( 'admin_init', array( $settings, 'url_shortener_setup_fields' ) );
+
+		// Register widget
+		add_action( 'widgets_init', function () {
+			register_widget( 'Url_shortener_widget' );
+		} );
 	}
 
 }

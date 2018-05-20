@@ -27,6 +27,9 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-url-shortener.php';
 // Admin settings page
 require plugin_dir_path( __FILE__ ) . 'includes/class-url-shortener-settings.php';
 
+// URL Shortener Widget
+require plugin_dir_path( __FILE__ ) . 'includes/class-url-shortener-widget.php';
+
 // Execute the plugin.
 $url_shortener_instance = new Url_Shortener();
 // $url_shortener_instance->get_version();
