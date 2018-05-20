@@ -24,6 +24,9 @@ define( 'URL_SHORTENER_VERSION', '1.0.0' );
 // The core plugin hooks.
 require plugin_dir_path( __FILE__ ) . 'includes/class-url-shortener.php';
 
+// Admin settings page
+require plugin_dir_path( __FILE__ ) . 'includes/class-url-shortener-settings.php';
+
 // Execute the plugin.
 function run_url_shortener() {
 
