@@ -50,7 +50,7 @@ class Url_ShortenerTest extends WP_UnitTestCase {
         $generated_field = ob_get_contents();
 
         ob_end_clean();
-        
+
         $this->assertEquals($expected, $generated_field);
 	}
 }

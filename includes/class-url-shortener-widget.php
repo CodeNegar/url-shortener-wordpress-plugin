@@ -31,7 +31,25 @@ class Url_shortener_widget extends WP_Widget {
 	// Front-end of the widget
 	public function widget( $args, $instance ) {
 		echo $args['before_widget'];
-		// todo: complete widget frontend
+
+		if ( ! empty( $instance['title'] ) ) {
+			echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ) . $args['after_title'];
+		}
+        // todo: cache request, use try cactch
+        $api_url = get_option('url_shortener_api_url');
+        $data = wp_remote_get( trim($api_url, '/') . '/index');
+        $urls = $data['body'];
+        $urls = json_decode($urls, true);
+        $printed_count = 0;
+        echo '<ul>';
+        foreach ($urls as $url) {
+            $printed_count++;
+            $link = '<li></li><a href="%short_link%">%short_link%%hits%</a></li>';
+            $short_link = $url['short_link'];
+            $hits = $instance['show_hits']? ' (' . $url['hits'] . ')' : '';
+            echo str_replace(['%short_link%', '%hits%'], [$short_link, $hits], $link);
+        }
+        echo '</ul>';
 		echo $args['after_widget'];
 	}
 
