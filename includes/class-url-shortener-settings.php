@@ -35,7 +35,7 @@ class Url_shortener_settings_page {
 			array(
 				'label' => 'URL Shortener installation URL',
 				'id' => 'url_shortener_api_url',
-				'type' => 'text',
+				'type' => 'url',
 				'placeholder' => 'http://www.exaple.com/links',
 				'desc' => 'Enter URL with http:// or https://',
 				'section' => 'url_shortener_section',
